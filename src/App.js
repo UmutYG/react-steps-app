@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react"
+import "./App.css"
+import Buttons from "./components/Buttons"
+import Numbers from "./components/Numbers"
+
+const messages = [
+  " React öğren ⚛️",
+  "İşlere başvur 💼",
+  "Paran ile yatırım yap 🤑",
+]
 
 function App() {
+  const [currentStep, setCurrentStep] = useState(1)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="steps">
+      <Numbers currentStep={currentStep} />
+      <p className="message">
+        {`Step ${currentStep}: ${messages[currentStep - 1]}`}
+      </p>
+      <Buttons currentStep={currentStep} setCurrentStep={setCurrentStep} />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
